@@ -1,0 +1,173 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background: linear-gradient(blue, yellow);
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+.input-box{
+    display: flex;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: #fff;
+}
+
+.image-preview{
+    min-height: 100px;
+    width: 300px;
+    border: 2px solid lightgray;
+    margin-left: 80px;
+    margin-top: 80px;
+    margin-bottom: 77px;
+
+    /*---Default text---*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #cccc;
+}
+
+.image-preview__default-text{
+    color: lightseagreen;
+}
+
+.input-form{
+    margin-left: 180px;
+    margin-top: 69px;
+    margin-right: 40px;
+    font-size: 15px;
+}
+
+.memory-group-form, .clock-group-form{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#gpu-name{
+    width: 85%;
+    border-radius: 3px;
+    border: none;
+    background-color: #ececec;
+}
+
+.memory-group-form{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#memory-size{
+    width: 60%;
+    border-radius: 3px;
+    border: none;
+    background-color: #ececec;
+}
+
+#memory-type{
+    width: 40%;
+    border-radius: 3px;
+    border: none;
+    background-color: #ececec;
+}
+
+#base-clock, #game-clock, #boost-clock{
+    border-radius: 3px;
+    border: none;
+    background-color: #ececec;
+}
+
+#gpu-chip{
+    width: 80%;
+    border-radius: 3px;
+    border: none;
+    background-color: #ececec;
+    margin-bottom: 10px;
+}
+
+.button-group{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.button-group button{
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 40px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-entry-button{
+    background-color: #11ADAD;
+}
+
+.clear-all-button{
+    background-color: #CA0909;
+}
+
+/*======== ENTRY LIST ========*/
+.entry-list{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2pc;
+    width: 90vw;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 2pc;
+}
+
+.gpu-item{
+    width: 93%;
+    display: flex;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.gpu-item img{
+    width: 30vw;
+}
+
+#output-gpu-name{
+    font-size: 1.5pc;
+}
+
+.output-form{
+    line-height: 0.8;
+}
+
+.output-form h1{
+    margin: 0;
+    font-size: 2.5ch;
+}
+
+#delete-button{
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 40px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #CA0909;
+    position: relative;
+    top: 70px;
+}

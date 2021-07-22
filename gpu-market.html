@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPU Market - Admin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="input-box">
+        <div class="image-preview" id="imagePreview">
+            <img src="" alt="Image Preview" class="image-preview__image">
+            <span class="image-preview__default-text">Image Preview</span>
+        </div>
+        <form class="input-form">
+            <input type="file" name="uploadPict" id="uploadPict"><br>
+            <label for="gpu-name">GPU Name</label>
+            <input type="text" name="gpu-name" id="gpu-name"><br>
+            <div class="memory-group-form">
+                <div class="m-size-group">
+                    <label for="memory-size">Memory Size</label>
+                    <input type="text" name="memory-size" id="memory-size">
+                </div>
+                <div class="m-type-group">
+                    <label for="memory-type">Memory Type</label>
+                    <input type="text" name="memory-type" id="memory-type">
+                </div>
+            </div>
+            <div class="clock-group-form">
+                <label for="base-clock">Base Clock</label>
+                <input type="text" name="base-clock" id="base-clock">
+                <label for="game-clock">Game Clock</label>
+                <input type="text" name="game-clock" id="game-clock">
+                <label for="boost-clock">Boost Clock</label>
+                <input type="text" name="boost-clock" id="boost-clock">
+            </div>
+            <label for="gpu-chip">GPU Chip</label>
+            <input type="text" name="gpu-chip" id="gpu-chip"><br>
+            <div class="button-group">
+                <button class="add-entry-button" type="button" onclick="addEntry()">Add Entry</button>
+                <button class="clear-all-button" type="button" onclick="reset()">Clear All</button>
+            </div>
+            </form>
+    </div>
+    <div class="entry-list">
+        <h1 style="text-align: center;">Entry List</h1>
+       <!--<div class="gpu-item">
+            <img src="vision rtx 3070.jpg" alt="" id="image">
+            <section class="output-form">
+                <h1>Gigabyte RTX 3070 Vision</h1>
+                <p>Memory Size: 8GB</p><br>
+                <p>Memory Type: GDDR6</p><br>
+                <p>Base Clock: 1500 Mhz</p><br>
+                <p>Game Clock: -</p><br>
+                <p>Boost Clock: 1750 Mhz</p><br>
+                <p>GPU Chip: GA104</p>
+            </section>
+            <button id="delete-button">DELETE</button>
+        </div>-->
+    </div>
+    <script>
+        const uploadPicture = document.getElementById('uploadPict');
+        const previewContainer = document.getElementById('imagePreview');
+        const previewImage = previewContainer.querySelector('.image-preview__image');
+        const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+        const entryListBox = document.querySelector('.entry-list');
+        /*-------INPUT ----------*/
+        let inputGpuName = document.querySelector('#gpu-name');
+        let inputMemorySize = document.querySelector('#memory-size');
+        let inputMemoryType = document.querySelector('#memory-type');
+        let inputBaseClock = document.querySelector('#base-clock');
+        let inputGameClock = document.querySelector('#game-clock');
+        let inputBoostClock = document.querySelector('#boost-clock');
+        let inputGpuChip = document.querySelector('#gpu-chip');
+
+        uploadPicture.addEventListener('change', function(){
+            const file = this.files[0];
+
+            if(file){
+                const fileReader = new FileReader();
+
+                previewDefaultText.style.display = 'none';
+                previewImage.style.display = 'block';
+                previewImage.style.width = '400px';
+                previewImage.style.height = '190px';
+
+                fileReader.addEventListener('load', function(){
+                    console.log(this);
+                    previewImage.setAttribute('src', this.result);
+                });
+
+                fileReader.readAsDataURL(file);
+            }
+        });
+
+        function addEntry(){
+            let newDiv__GpuItem = document.createElement('div');
+            newDiv__GpuItem.setAttribute('class', 'gpu-item');
+            let outputImage = document.createElement('img');
+
+            let newSection__GpuItem = document.createElement('section');
+            newSection__GpuItem.setAttribute('class', 'output-form');
+
+            newDiv__GpuItem.appendChild(outputImage);
+            outputImage.setAttribute('src', previewImage.src);
+
+            let newParagraph = document.createElement('p');
+            
+            newSection__GpuItem.innerHTML = 
+            "<h1>" + inputGpuName.value + "</h1><br>" + "<p>Memory Size: " + inputMemorySize.value + "</p><br>" + "<p>Memory Type: " + inputMemoryType.value + "</p><br>" + "<p>Base Clock: " + inputBaseClock.value + "</p><br>" + "<p>Game Clock: " + inputGameClock.value + "</p><br>" + "<p>Boost Clock: " + inputBoostClock.value + "</p><br>" + "<p>GPU Chip: " + inputGpuChip.value + "</p>";
+
+            newDiv__GpuItem.appendChild(newSection__GpuItem);
+            entryListBox.appendChild(newDiv__GpuItem);
+
+            let newButton__GpuItem = document.createElement('button');
+            let textButton__delete = document.createTextNode('DELETE');
+            newButton__GpuItem.setAttribute('id', 'delete-button');
+            newButton__GpuItem.appendChild(textButton__delete);
+            newDiv__GpuItem.appendChild(newButton__GpuItem);
+
+            newButton__GpuItem.addEventListener('click', function(){
+                entryListBox.removeChild(newDiv__GpuItem);
+            });
+        }
+
+
+
+
+    </script>
+</body>
+</html>
